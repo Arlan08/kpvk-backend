@@ -1,0 +1,19 @@
+version: '3.2'
+
+services:
+
+  kpvkbackend_core_db:
+    image: postgres:14
+    restart: on-failure
+    environment:
+      TZ: "Asia/Almaty"
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: backend-core
+    ports:
+      - "5444:5432"
+    container_name: kpvkbackend_core_db
+    volumes:
+      - ./tmp/database/core-db:/var/lib/postgresql/data
+
+networks:
+  web:
